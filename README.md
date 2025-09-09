@@ -13,4 +13,7 @@ izberita ka ceta, idealno dark mode. lahka pa tut light ce bols rata, u glavnem 
 
 
 qemu-img create -f qcow2 Image.img 40G
-qemu-system-x86_64 -enable-kvm -cdrom ubuntu-24.04.3-live-server-amd64.iso -boot menu=on -drive file=Image.img -m 4G cpu host -smp 4 -vga qxl
+qemu-system-x86_64 -enable-kvm -cdrom ubuntu-24.04.3-live-server-amd64.iso -boot menu=on -drive file=Image.img -m 4G -smp 4 -vga virtio -display sdl,gl=on
+
+maticserver login:fiausch
+Passwd:1425
