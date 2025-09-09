@@ -1,0 +1,111 @@
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'naslov';
+  src: url('font/Ditty.ttf') format('truetype');
+}
+
+
+body {
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #282828;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  background: #282828;
+  display: flex;
+
+  justify-content: left;
+  align-items: left;
+  vertical-align:middle;
+}
+
+.login-box {
+  width: 100%;
+  padding: 20px;
+  background:#3c3836;
+  opacity: 0.74;
+  border-radius: 34px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.login-ubox{
+  width: 90%;
+  padding: 20px;
+  align-self: center;
+  align-items: center;
+}
+
+.login-title {
+  color: #ddd5c4;
+  font-family: Inter;
+  font-weight: Black;
+  font-size: 36px;
+  opacity: 1;
+  text-align: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.label{
+  font-family: Inter;
+  font-weight: Black;
+  font-size: 22px;
+  color: #ddd5c4;
+  margin-top: 10px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 10px;
+  background: rgba(215, 153, 33, 1);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  margin-top: 20px;
+  cursor: pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.registracija-button {
+  width: 100%;
+  padding: 10px;
+  background: rgb(243, 197, 104);
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  margin-top: 20px;
+  cursor: pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  outline-color: rgba(215, 153, 33, 1);
+  outline-style: auto;
+}
+
+.submit-button:hover,
+.registracija-button:hover{
+  background: rgba(181, 118, 20, 0.9);
+}
