@@ -4,16 +4,13 @@
 
 @font-face {
   font-family: 'naslov';
-  src: url('font/Ditty.ttf') format('truetype');
+  src: url('font/Arimo-Regular.ttf') format('truetype');
 }
 
 
 body {
   font-size: 14px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
   margin: 0;
   background-color: #282828;
 }
@@ -41,9 +38,22 @@ body {
   vertical-align: middle;
 }
 
+.meni-box {
+  width: 100%;
+  padding: 20px;
+  height: 100vh;
+  background:#3c3836;
+  opacity: 0.74;
+  border-top-right-radius: 34px;
+  border-bottom-right-radius: 34px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: middle;
+}
+
 .login-ubox{
   width: 90%;
-  padding: 20px;
   align-self: center;
   align-items: center;
 }
@@ -76,6 +86,20 @@ body {
 }
 
 .submit-button {
+  width: 100%;
+  padding: 10px;
+  background: rgba(215, 153, 33, 1);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  margin-top: 20px;
+  cursor: pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.meni-button {
   width: 100%;
   padding: 10px;
   background: rgba(215, 153, 33, 1);
