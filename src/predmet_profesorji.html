@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meni</title>
+    <title>Stran z Urejanje Naloge in Polnim CSS-jem</title>
     <link href="styles.css" rel="stylesheet" />
 
 </head>
@@ -14,22 +14,30 @@
         <nav class="nav-menu">
             <ul>
                 <li><a href="#" class="menu-item">Urnik</a></li>
-
-                <li><a href="#" class="menu-item">Ocene</a></li>
-
-                <li><a href="#" class="menu-item">Spletna učilnica</a></li>
-
                 <li><a href="#" class="menu-item">Učenci</a></li>
-
-                <li><a href="#" class="menu-item">Profesorji</a></li>
-            </ul>
+                <li><a href="#" class="menu-item">Spletna učilnica</a></li>
+                </ul>
         </nav>
         <div class="menu-footer">
             <a href="#" class="logout-btn">Izpis</a>
         </div>
     </aside>
 
-    <main style="flex-grow: 1; background-color: #1a1a1a;"></main>
+    <main class="main-content">
+        <div class="subject-title">
+            Ime predmeta
+        </div>
+
+        <ul class="task-list">
+            <li class="task-item">
+                Naloga n
+                <button class="edit-button">Uredi nalogo</button>
+            </li>
+        </ul>
+        
+        <a href="#" class="add-task-button">Dodaj nalogo</a>
+
+    </main>
 
 </body>
 </html>

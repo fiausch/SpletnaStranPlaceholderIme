@@ -9,18 +9,167 @@
 
 
 body {
-  font-size: 14px;
-  display: flex;
   margin: 0;
-  background-color: #282828;
+  padding: 0;
+  background-color: #404040; 
+  display: flex; 
+  font-family: Arial, sans-serif;
+  color: white; 
 }
 
+.sidebar {
+  width: 300px;
+  background-color: #3c3836;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.menu-header {
+  background-color: #3b3a36; 
+  padding: 20px 15px 10px 15px;
+  font-size: 1.7em;
+  font-weight: 800;
+  text-align: center;
+  font-family: 'tahoma';
+}
+
+.nav-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0; 
+}
+
+.menu-item {
+  display: block;
+  background-color: #c78911; 
+  color: white;
+  text-decoration: none;
+  padding: 12px 25px;
+  margin: 15px 15px; 
+  border-radius: 10px;
+  text-align: center;
+  transition: background-color 0.2s;
+  font-size: 1.5em;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.menu-item:hover {
+  background-color: #d79921;
+}
+
+
+.menu-footer {
+  margin-top: auto;
+  padding: 15px 0 15px 0;
+  text-align: center;
+}
+
+.logout-btn {
+  display: inline-block;
+  background-color: #c78911;
+  color: white;
+  text-decoration: none;
+  padding: 5px 25px;
+  border-radius: 10px;
+  font-size: 1em;
+  transition: background-color 0.2s;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.logout-btn:hover {
+  background-color: #d79921;
+}
+
+.main-content {
+  flex-grow: 1; 
+  padding: 20px 40px; 
+  background-color: #202020; 
+}
+
+.subject-title {
+  font-size: 1.8em;
+  font-weight: 800;
+  color: #fff; 
+  margin-bottom: 25px;
+  margin-left: 17px;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-weight: bold;
+}
+
+/* Okvir posamezne naloge */
+.task-item {
+  background-color: #665c54; 
+  padding: 15px 20px;
+  margin-bottom: 30px; 
+  border-radius: 10px;
+  font-size: 1.4em;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+}
+
+.task-item:hover {
+  background-color: #786e66; 
+}
+
+/* Gumb 'Uredi nalogo' znotraj okvirja */
+.edit-button {
+  background-color: #f7e6c4; 
+  color: black;
+  font-size: 0.9em;
+  font-weight: bold;
+  padding: 5px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  cursor: pointer;
+  border: none;
+  white-space: nowrap; 
+  margin-left: 20px;
+}
+
+.edit-button:hover {
+  background-color: #fcefd9;
+}
+
+/* Gumb 'Dodaj nalogo' (zelen) */
+.add-task-button {
+  display: inline-block;
+  background-color: #8fa04b; 
+  color: white;
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 12px 25px;
+  border-radius: 10px;
+  text-decoration: none;
+  margin-top: -5px; 
+  margin-left: 0px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.add-task-button:hover {
+  background-color: #a0b462;
+}
+
+/* --- DODATNI STILI (Prijavni/Meni box) --- */
 .container {
   width: 100%;
   height: 100%;
   background: #282828;
   display: flex;
-
   justify-content: left;
   align-items: left;
   vertical-align:middle;

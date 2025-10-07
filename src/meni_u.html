@@ -1,90 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
-    <link href="styles.css" rel="stylesheet" />
     <title>Meni</title>
     <style>
-      .table{
-        padding-left: 10%;
-        margin-top: 01%;
-        height: auto;
-        align-self: first baseline;
-        border-radius: 34px;
-        width: 90%;
-        text-align: left;
-      }
-      th{
-        color: wheat;
-        font-size: 60px;
-        font-family: 'naslov';
-        margin: 0;
-        padding: 0;
-        text-align: left;
-      }
-      td{
-        border-radius: 34px;
-      }
-      .podatki{
-        padding-left: 3%;
-        font-size: 25px;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        align-self: stretch;
-      }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a; 
+            display: flex;
+            font-family: Arial, sans-serif;
+        }
+
+
+        .sidebar {
+            width: 250px;
+            background-color: #3b3a36; 
+            color: white;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            box-sizing: border-box;
+            
+            border-top-right-radius: 20px; 
+            border-bottom-right-radius: 20px;
+        }
+
+        .menu-header {
+            background-color: #3b3a36; 
+            padding: 15px 15px 15px 25px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-bottom: none;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            padding: 0;
+
+            margin: 10px 0; 
+        }
+
+        .menu-item {
+            display: block;
+            background-color: #e09115;
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            margin: 2px 15px; 
+            border-radius: 5px;
+            text-align: left;
+            transition: background-color 0.2s;
+            font-size: 1em;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-item:hover {
+            background-color: #ffaa33;
+        }
+
+        .menu-footer {
+            margin-top: auto;
+            padding: 15px 0 15px 0;
+            text-align: center;
+        }
+
+        .logout-btn {
+            display: inline-block;
+            background-color: #e09115;
+            color: white;
+            text-decoration: none;
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-size: 0.8em;
+            transition: background-color 0.2s;
+        }
+
+        .logout-btn:hover {
+            background-color: #ffaa33;
+        }
+
     </style>
 </head>
 <body>
-    <table style="height: 100%; width: 100%; align-self:first baseline;">
-        <tr><td style="width: 15%;">
-    <div class="container">
-      <div class="meni-box" id="vpisi">
-        <div class="login-ubox">
-        <span class="login-title">Meni</span>
-        <br><br>
-        <!-- php za določanje kaj vse se bo pojavilo -->
-        <button class="meni-button" onclick="window.location.href='##'">Urnik</button>
-        <button class="meni-button" onclick="window.location.href='##'">Ocene</button>
-        <button class="meni-button" onclick="window.location.href='##'">Spletna Učilnica</button>
 
+    <aside class="sidebar">
+        <div class="menu-header">Meni</div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="#" class="menu-item">Urnik</a></li>
+                <br>
+                <li><a href="#" class="menu-item">Učenci</a></li>
+                <br>
+                <li><a href="#" class="menu-item">Spletna učilnica</a></li>
+            </ul>
+        </nav>
+        <div class="menu-footer">
+            <a href="#" class="logout-btn">Izpis</a>
         </div>
-      </div>
-    </div></td>
-<td>
-    <table class="table">
-      <tr>
-        <th>
-          Podatki učenca
-        </td>
-      </tr>
-      <tr style="height: 33%;">
-        <td style="background-color: #928374; " class="podatki">
-          neki
-        </td>
-      </tr>
-      <tr>
-        <th>
-          Predmeti
-        </td>
-      </tr>
-      <tr style="height: 33%;">
-        <td style="background-color: #7c6f64; " class="podatki">
-          neki
-        </td>
-      </tr>
-      <tr>
-        <th>
-          Predmeti s nedavnim dostopom
-        </td>
-      </tr>
-      <tr style="height: 33%;">
-        <td style="background-color: #665c54; " class="podatki">
-          neki
-        </td>
-      </tr>
-    </table>
-</td></tr>
-</table>
+    </aside>
+
+    <main style="flex-grow: 1; background-color: #1a1a1a;"></main>
+
 </body>
 </html>
