@@ -1,10 +1,10 @@
 <?php
 // Konfiguracija podatkovne baze
 
-define('DB_HOST', ' sql310.infinityfree.com');
+define('DB_HOST', 'sql310.infinityfree.com');
 define('DB_USER', 'if0_40317569');
 define('DB_PASS', '6R0VTKGC9FZWpK');
-define('DB_NAME', ' if0_40317569_placeholder_baza');
+define('DB_NAME', 'if0_40317569_placeholder_baza');
 define('DB_CHARSET', 'utf8mb4');
 
 // Vzpostavitev povezave z bazo
