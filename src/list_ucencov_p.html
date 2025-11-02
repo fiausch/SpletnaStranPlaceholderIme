@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Učenci - V1</title>
+    <style> /* Vstavite SKUPNI CSS za Tabela-Strani TUKAJ */ /* ... (Vse nastavitve iz prejšnje kode: Barve, *, body, content-container) ... */
+        
+        /* NAVIGACIJSKA VRSTICA (Enaka kot pri straneh Urnik/Ocene) */
+        .main-nav {
+            width: 100%;
+            background-color: var(--color-light-beige); /* EBDBB2 */
+            padding: 15px 0;
+            margin-bottom: 20px;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+        
+        .main-nav a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            padding: 5px;
+            transition: color 0.2s;
+        }
+
+        .main-nav a:hover, .main-nav .active {
+            color: var(--color-dark-beige);
+        }
+        
+        /* GLAVNO POLJE VSEBINE - Tabela */
+        .table-box {
+            min-height: 500px;
+            padding: 30px;
+            background-color: var(--color-light-beige); /* EBDBB2 */
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        /* Tabela Postavitev - Uporabimo Grid ali Flex/Table za stolpce */
+        .student-table {
+            display: grid;
+            /* 5 stolpcev, ki približno ustrezajo širini na sliki */
+            grid-template-columns: 1fr 1fr 1.5fr 1fr 1fr; 
+            gap: 10px;
+            text-align: center;
+            color: var(--color-text);
+        }
+        
+        /* Glava tabele */
+        .table-header {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid var(--color-dark-beige);
+        }
+        
+        /* Vrstice podatkov */
+        .table-row {
+            display: contents; /* Omogoča podrejenim elementom, da so Grid elementi */
+        }
+        
+        .table-data {
+            padding: 10px 5px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        /* Sredinska vrstica z barvnim poudarkom (Kot na sliki) */
+        .table-data-highlighted {
+            background-color: var(--color-dark-beige); /* D5C4A1 */
+            /* Pripasamo na 5 Grid stolpcev */
+            grid-column: 1 / 6;
+            display: grid;
+            grid-template-columns: subgrid;
+            border-radius: 5px;
+        }
+
+        .highlight-cell {
+            padding: 10px 5px;
+            color: var(--color-text);
+            /* Uporaba svetlejše barve za notranjost, kot na sliki */
+            background-color: #e6d8b0; 
+            border-radius: 5px;
+        }
+        
+        /* Gumb Uredi */
+        .btn-edit {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: var(--color-dark-beige); /* D5C4A1 */
+            color: var(--color-text);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }</style>
+</head>
+<body>
+    <nav class="main-nav">
+        <a href="#">Ocene</a>
+        <a href="#">Urnik</a>
+        <a href="#">Spletna učilnica</a>
+        <a href="#" class="active">Učenci</a>
+    </nav>
+    
+    <div class="content-container">
+        <div class="table-box">
+            
+            <div class="student-table">
+                <div class="table-header">Ime</div>
+                <div class="table-header">Priimek</div>
+                <div class="table-header">Predmet/Ocena</div>
+                <div class="table-header">Opravičene ure</div>
+                <div class="table-header">Neopravičene ure</div>
+
+                <div class="table-data-highlighted">
+                    <div class="highlight-cell">Ime 1</div>
+                    <div class="highlight-cell">Priimek 1</div>
+                    <div class="highlight-cell"></div> <div class="highlight-cell"></div> 
+                    <div class="highlight-cell"></div>
+                </div>
+
+                <div class="table-data-highlighted">
+                    <div class="highlight-cell">Ime 2</div>
+                    <div class="highlight-cell">Priimek 2</div>
+                    <div class="highlight-cell"></div>
+                    <div class="highlight-cell"></div>
+                    <div class="highlight-cell"></div>
+                </div>
+                
+                </div>
+            
+            <button class="btn-edit">Uredi</button>
+
+        </div>
+    </div>
+</body>
+</html>

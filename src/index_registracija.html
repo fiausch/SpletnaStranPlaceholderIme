@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ustvari račun</title>
+    <style>
+        /* Osnovno resetiranje */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Sredinska postavitev - Ozadje: Bela */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #FFFFFF;
+        }
+
+        /* Kontejner za celotno formo - Ozadje: EBDBB2 */
+        .register-box {
+            width: 350px;
+            padding: 30px 40px;
+            background-color: #EBDBB2; 
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Naslov, Oznake in Povezave - Temnejši tekst */
+        .title, label, .login-link {
+             color: #3c3836; 
+        }
+        
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        /* Forma in Vnosna polja */
+        form {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        label {
+            margin-top: 10px; /* Manj razmika kot pri prijavi, saj je več polj */
+            margin-bottom: 5px;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="date"] { /* Dodan tip date za Datum rojstva */
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 5px; 
+            border: 1px solid #D5C4A1; /* Obroba: D5C4A1 */
+            border-radius: 5px;
+            font-size: 16px;
+            height: 40px; 
+            background-color: #ffffff; /* Bela notranjost polja */
+        }
+
+        /* Gumb za vpis - Barva: D5C4A1 */
+        .btn-submit {
+            width: 100px;
+            margin: 25px auto 5px auto; /* Več prostora zgoraj */
+            padding: 8px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #D5C4A1; /* Barva gumba */
+            color: #3c3836; 
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-submit:hover {
+            background-color: #c9b48c; 
+        }
+
+        /* Povezava za prijavo */
+        .login-link {
+            font-size: 14px;
+            text-decoration: none;
+            margin-top: 5px;
+            display: block;
+        }
+
+        .login-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-box">
+            <h1 class="title">Ustvari račun</h1>
+
+            <form>
+                <label for="ime">Ime:</label>
+                <input type="text" id="ime" name="ime" required>
+
+                <label for="priimek">Priimek:</label>
+                <input type="text" id="priimek" name="priimek" required>
+
+                <label for="uporabnisko_ime">Uporabniško ime:</label>
+                <input type="text" id="uporabnisko_ime" name="uporabnisko_ime" required>
+                
+                <label for="datum_rojstva">Datum rojstva:</label>
+                <input type="date" id="datum_rojstva" name="datum_rojstva" required>
+
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password">Geslo:</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit" class="btn-submit">Vpis</button>
+            </form>
+
+            <a href="#" class="login-link">Prijava</a>
+        </div>
+    </div>
+</body>
+</html>

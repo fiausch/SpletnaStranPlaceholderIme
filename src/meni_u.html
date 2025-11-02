@@ -3,106 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meni</title>
+    <title>Profil - Različica 1</title>
     <style>
-        body {
+        /* Globalne nastavitve in barve */
+        :root {
+            --color-light-beige: #EBDBB2;
+            --color-dark-beige: #D5C4A1;
+            --color-text: #3c3836;
+            --color-white: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            background-color: #1a1a1a; 
-            display: flex;
-            font-family: Arial, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
-
-        .sidebar {
-            width: 250px;
-            background-color: #3b3a36; 
-            color: white;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            box-sizing: border-box;
-            
-            border-top-right-radius: 20px; 
-            border-bottom-right-radius: 20px;
+        body {
+            background-color: var(--color-white);
+            padding: 40px;
         }
 
-        .menu-header {
-            background-color: #3b3a36; 
-            padding: 15px 15px 15px 25px;
-            font-size: 1.2em;
+        .profile-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 20px;
+        }
+        
+        /* HEADER - ENAK ZA VSE RAZLIČICE */
+        .profile-header {
+            grid-column: 1 / 3;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 25px;
+            background-color: var(--color-light-beige);
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 28px;
             font-weight: bold;
-            border-bottom: none;
+            color: var(--color-text);
         }
 
-        .nav-menu ul {
+        .user-icon {
+            font-size: 40px;
+            line-height: 1;
+        }
+
+        .btn-logout {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: var(--color-dark-beige);
+            color: var(--color-text);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-logout:hover {
+            background-color: #c9b48c;
+        }
+        
+        /* POSTAVITEV IN STILI BLOKOV */
+        .left-column {
+            display: grid;
+            grid-template-rows: auto auto; 
+            gap: 20px;
+        }
+
+        .box {
+            background-color: var(--color-light-beige);
+            padding: 20px 25px;
+            border-radius: 10px;
+        }
+
+        .box h3 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--color-text);
+        }
+
+        .data-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .data-label {
+            width: 110px;
+            font-weight: 500;
+            color: var(--color-text);
+            white-space: nowrap;
+        }
+
+        .data-input {
+            flex-grow: 1;
+            padding: 8px;
+            border: 1px solid var(--color-dark-beige);
+            border-radius: 5px;
+            background-color: var(--color-white); 
+            height: 35px;
+            font-size: 14px;
+        }
+
+        .other-box {
+            text-align: left;
+        }
+        
+        .other-box ul {
             list-style: none;
             padding: 0;
-
-            margin: 10px 0; 
-        }
-
-        .menu-item {
-            display: block;
-            background-color: #e09115;
-            color: white;
-            text-decoration: none;
-            padding: 12px 25px;
-            margin: 2px 15px; 
-            border-radius: 5px;
             text-align: left;
-            transition: background-color 0.2s;
-            font-size: 1em;
-            font-weight: bold;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            padding-left: 20px;
         }
 
-        .menu-item:hover {
-            background-color: #ffaa33;
+        .other-box ul li {
+            margin: 10px 0;
+            font-size: 16px;
         }
-
-        .menu-footer {
-            margin-top: auto;
-            padding: 15px 0 15px 0;
-            text-align: center;
-        }
-
-        .logout-btn {
-            display: inline-block;
-            background-color: #e09115;
-            color: white;
+        
+        .other-box ul li a {
+            color: var(--color-text);
             text-decoration: none;
-            padding: 5px 15px;
-            border-radius: 5px;
-            font-size: 0.8em;
-            transition: background-color 0.2s;
+        }
+        
+        .other-box ul li a:hover {
+            text-decoration: underline;
+        }
+        
+        /* PREDMETI - ENAK ZA VSE RAZLIČICE */
+        .subjects-box {
+            grid-column: 2 / 3;
+        }
+        
+        .subjects-list {
+            list-style: none;
+            padding: 0;
+            line-height: 1.6;
+            color: var(--color-text);
+            padding-left: 20px;
         }
 
-        .logout-btn:hover {
-            background-color: #ffaa33;
+        .subjects-list li {
+            margin-bottom: 10px;
         }
-
     </style>
 </head>
 <body>
+    <div class="profile-container">
+        
+        <header class="profile-header">
+            <div class="user-info">
+                <span class="user-icon">&#128100;</span> 
+                Ime Priimek
+            </div>
+            <button class="btn-logout">Izpis</button>
+        </header>
 
-    <aside class="sidebar">
-        <div class="menu-header">Meni</div>
-        <nav class="nav-menu">
-            <ul>
-                <li><a href="#" class="menu-item">Urnik</a></li>
-                <br>
-                <li><a href="#" class="menu-item">Učenci</a></li>
-                <br>
-                <li><a href="#" class="menu-item">Spletna učilnica</a></li>
-            </ul>
-        </nav>
-        <div class="menu-footer">
-            <a href="#" class="logout-btn">Izpis</a>
+        <div class="left-column">
+            
+            <section class="box user-data-box">
+                <h3>Uporabnikovi podatki</h3>
+                
+                <div class="data-item">
+                    <div class="data-label">E-mail:</div>
+                    <input type="text" class="data-input" value="*email*" disabled>
+                </div>
+                
+                <div class="data-item">
+                    <div class="data-label">Datum rojstva:</div>
+                    <input type="text" class="data-input" value="*datum rojstva*" disabled>
+                </div>
+                
+                <div class="data-item">
+                    <div class="data-label">Razred:</div>
+                    <input type="text" class="data-input" value="*razred*" disabled>
+                </div>
+            </section>
+            
+            <section class="box other-box">
+                <h3>Drugo</h3>
+                <ul>
+                    <li><a href="#">Spletna učilnica</a></li>
+                    <li><a href="#">Urnik</a></li>
+                    <li><a href="#">Ocene</a></li>
+                </ul>
+            </section>
         </div>
-    </aside>
 
-    <main style="flex-grow: 1; background-color: #1a1a1a;"></main>
-
+        <section class="box subjects-box">
+            <h3>Predmeti</h3>
+            <ul class="subjects-list">
+                <li>SMV- Stroka Moderne vsebine</li>
+                <li>NRPA - Načrtovanje in razvoj programskih aplikacij</li>
+                <li>NUPB - Napredna uporaba podatkovnih baz</li>
+            </ul>
+        </section>
+    </div>
 </body>
 </html>

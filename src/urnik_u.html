@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urnik - V1</title>
+    <style> /* Vstavite SKUPNI CSS za stran URNIK TUKAJ */ /* Barve */
+      :root {
+          --color-light-beige: #EBDBB2;
+          --color-dark-beige: #D5C4A1;
+          --color-text: #3c3836;
+          --color-white: #FFFFFF;
+      }
+
+      * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+          font-family: Arial, Helvetica, sans-serif;
+      }
+
+      /* POSTAVITEV GLAVNE STRANI */
+      body {
+          background-color: var(--color-white);
+          padding: 0;
+          display: block;
+      }
+
+      .content-container {
+          max-width: 1000px; 
+          margin: 20px auto;
+          padding: 0 20px;
+      }
+      
+      /* NAVIGACIJSKA VRSTICA - Header (Enaka kot pri straneh Ocene) */
+      .main-nav {
+          width: 100%;
+          background-color: var(--color-light-beige); /* EBDBB2 */
+          padding: 15px 0;
+          margin-bottom: 20px;
+          border-radius: 0 0 10px 10px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          display: flex;
+          justify-content: center;
+          gap: 40px;
+      }
+      
+      .main-nav a {
+          color: var(--color-text);
+          text-decoration: none;
+          font-weight: bold;
+          font-size: 18px;
+          padding: 5px;
+          transition: color 0.2s;
+      }
+
+      .main-nav a:hover, .main-nav .active {
+          color: var(--color-dark-beige);
+      }
+      
+      /* GLAVNO POLJE VSEBINE - Urnik */
+      .schedule-box {
+          min-height: 500px; /* Za vizualno predstavitev, da je polje veliko */
+          padding: 30px;
+          background-color: var(--color-light-beige); /* EBDBB2 */
+          border-radius: 15px;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+          position: relative; /* Za pozicioniranje gumba Uredi */
+      }
+      
+      .schedule-box h3 {
+          font-size: 24px;
+          font-weight: bold;
+          text-align: center;
+          margin-bottom: 20px;
+          color: var(--color-text);
+      }
+
+      .btn-edit {
+          position: absolute;
+          bottom: 20px;
+          right: 20px;
+          padding: 8px 20px;
+          border: none;
+          border-radius: 5px;
+          background-color: var(--color-dark-beige); /* D5C4A1 */
+          color: var(--color-text);
+          font-size: 16px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: background-color 0.2s;
+      }
+
+      .btn-edit:hover {
+          background-color: #c9b48c;
+      }</style>
+</head>
+<body>
+    <nav class="main-nav">
+        <a href="#">Ocene</a>
+        <a href="#" class="active">Urnik</a>
+        <a href="#">Spletna učilnica</a>
+    </nav>
+    
+    <div class="content-container">
+        <div class="schedule-box">
+            <h3>Urnik</h3>
+            </div>
+    </div>
+</body>
+</html>

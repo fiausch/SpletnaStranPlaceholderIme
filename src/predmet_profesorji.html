@@ -3,41 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stran z Urejanje Naloge in Polnim CSS-jem</title>
-    <link href="styles.css" rel="stylesheet" />
+    <title>Moji Predmeti</title>
+    <style> /* Vstavite ZGORNJI CSS za Moji Predmeti TUKAJ *//* Barve */
+        :root {
+            --color-light-beige: #EBDBB2;
+            --color-dark-beige: #D5C4A1;
+            --color-text: #3c3836;
+            --color-white: #FFFFFF;
+        }
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* POSTAVITEV GLAVNE STRANI */
+        body {
+            background-color: var(--color-white);
+            padding: 0;
+            display: block;
+        }
+
+        .content-container {
+            max-width: 1000px; 
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        
+        /* NAVIGACIJSKA VRSTICA (3 ELEMENTI) */
+        .main-nav {
+            width: 100%;
+            background-color: var(--color-light-beige); /* EBDBB2 */
+            padding: 15px 0;
+            margin-bottom: 20px;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+        
+        .main-nav a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            padding: 5px;
+            transition: color 0.2s;
+        }
+
+        .main-nav a:hover {
+            color: var(--color-dark-beige);
+        }
+        
+        /* GLAVNO POLJE VSEBINE - Moji predmeti */
+        .subjects-list-box {
+            min-height: 500px;
+            padding: 30px;
+            background-color: var(--color-light-beige); /* EBDBB2 */
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .subjects-list-box h3 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: var(--color-text);
+        }
+
+        /* Postavitev posameznega predmeta (Row) */
+        .subject-row-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0;
+            margin-bottom: 10px;
+            
+            /* Dve barvi v vrstici - Uporabimo kot kontejner za barvni poudarek */
+            background-color: var(--color-dark-beige); /* D5C4A1 */
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        .subject-name-display {
+            padding: 10px 15px;
+            flex-grow: 1;
+            font-size: 16px;
+            color: var(--color-text);
+            /* Leva, svetlejša barva iz vrstice */
+            background-color: #e6d8b0; 
+        }
+
+        /* Gumb za urejanje znotraj vrstice */
+        .btn-subject-edit {
+            padding: 10px 15px;
+            border: none;
+            background-color: var(--color-dark-beige); /* D5C4A1 - Desna, temnejša barva */
+            color: var(--color-text);
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap; /* Prepreči prelom teksta */
+            transition: background-color 0.2s;
+            border-radius: 0 5px 5px 0; /* Zaobljen samo desni rob */
+        }
+        
+        .btn-subject-edit:hover {
+            background-color: #c9b48c;
+        }
+        
+        /* Glavni gumb Uredi na dnu */
+        .btn-edit-main {
+            float: right;
+            margin-top: 20px;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: var(--color-dark-beige); /* D5C4A1 */
+            color: var(--color-text);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-edit-main:hover {
+            background-color: #c9b48c;
+        } </style>
 </head>
 <body>
+    <nav class="main-nav">
+        <a href="#">Ocene</a>
+        <a href="#">Urnik</a>
+        <a href="#">Spletna učilnica</a>
+    </nav>
+    
+    <div class="content-container">
+        <div class="subjects-list-box">
+            
+            <h3>Moji predmeti</h3>
+            
+            <div class="subject-row-item">
+                <span class="subject-name-display">Ime predmeta 1</span>
+                <button class="btn-subject-edit">Uredi (admin/prof.)</button>
+            <!-- uredi gumb je samo za admina in profesorja-->
+            </div>
+            
+            <div class="subject-row-item">
+                <span class="subject-name-display">Ime predmeta n</span>
+                <button class="btn-subject-edit">Uredi (admin/prof.)</button>
+            </div>
 
-    <aside class="sidebar">
-        <div class="menu-header">Meni</div>
-        <nav class="nav-menu">
-            <ul>
-                <li><a href="#" class="menu-item">Urnik</a></li>
-                <li><a href="#" class="menu-item">Učenci</a></li>
-                <li><a href="#" class="menu-item">Spletna učilnica</a></li>
-                </ul>
-        </nav>
-        <div class="menu-footer">
-            <a href="#" class="logout-btn">Izpis</a>
+            <button class="btn-edit-main">Uredi</button>
+
         </div>
-    </aside>
-
-    <main class="main-content">
-        <div class="subject-title">
-            Ime predmeta
-        </div>
-
-        <ul class="task-list">
-            <li class="task-item">
-                Naloga n
-                <button class="edit-button">Uredi nalogo</button>
-            </li>
-        </ul>
-        
-        <a href="#" class="add-task-button">Dodaj nalogo</a>
-
-    </main>
-
+    </div>
 </body>
 </html>

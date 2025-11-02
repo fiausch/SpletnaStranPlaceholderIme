@@ -1,284 +1,786 @@
-* {
-  box-sizing: border-box;
+/* ============================================
+   GLOBALNE NASTAVITVE IN BARVE
+   ============================================ */
+
+:root {
+    --color-light-beige: #EBDBB2;
+    --color-dark-beige: #D5C4A1;
+    --color-text: #3c3836;
+    --color-white: #FFFFFF;
 }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ============================================
+   FONTI
+   ============================================ */
 
 @font-face {
-  font-family: 'naslov';
-  src: url('font/Arimo-Regular.ttf') format('truetype');
+    font-family: 'naslov';
+    src: url('font/Arimo-Regular.ttf') format('truetype');
 }
 
+/* ============================================
+   OSNOVNI STILI ZA STRAN
+   ============================================ */
 
 body {
-  margin: 0;
-  padding: 0;
-  background-color: #404040; 
-  display: flex; 
-  font-family: Arial, sans-serif;
-  color: white; 
+    background-color: var(--color-white);
+    padding: 0;
+    display: block;
 }
 
+/* ============================================
+   KONTEJNER ZA VSEBINO
+   ============================================ */
+
+.content-container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+/* ============================================
+   NAVIGACIJSKA VRSTICA
+   ============================================ */
+
+.main-nav {
+    width: 100%;
+    background-color: var(--color-light-beige);
+    padding: 15px 0;
+    margin-bottom: 20px;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.main-nav a {
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 5px;
+    transition: color 0.2s;
+}
+
+.main-nav a:hover,
+.main-nav .active {
+    color: var(--color-dark-beige);
+}
+
+/* ============================================
+   PRIJAVA IN REGISTRACIJA
+   ============================================ */
+
+.login-container,
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #FFFFFF;
+}
+
+.login-box,
+.register-box {
+    width: 350px;
+    padding: 30px 40px;
+    background-color: #EBDBB2;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.login-box .title,
+.register-box .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #3c3836;
+}
+
+.login-box form,
+.register-box form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.login-box label,
+.register-box label {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: 500;
+    font-size: 16px;
+    color: #3c3836;
+}
+
+.register-box label {
+    margin-top: 10px;
+}
+
+.login-box input[type="email"],
+.login-box input[type="password"],
+.register-box input[type="text"],
+.register-box input[type="email"],
+.register-box input[type="password"],
+.register-box input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #D5C4A1;
+    border-radius: 5px;
+    font-size: 16px;
+    height: 40px;
+    background-color: #ffffff;
+}
+
+.register-box input {
+    margin-bottom: 5px;
+}
+
+.btn-submit {
+    width: 100px;
+    margin: 20px auto 30px auto;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #D5C4A1;
+    color: #3c3836;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.register-box .btn-submit {
+    margin: 25px auto 5px auto;
+}
+
+.btn-submit:hover {
+    background-color: #c9b48c;
+}
+
+.create-account-link,
+.login-link {
+    font-size: 14px;
+    text-decoration: none;
+    margin-top: 10px;
+    display: block;
+    color: #3c3836;
+}
+
+.login-link {
+    margin-top: 5px;
+}
+
+.create-account-link:hover,
+.login-link:hover {
+    text-decoration: underline;
+}
+
+/* ============================================
+   PROFIL/MENU STRAN
+   ============================================ */
+
+.profile-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 20px;
+    padding: 40px;
+}
+
+.profile-header {
+    grid-column: 1 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 25px;
+    background-color: var(--color-light-beige);
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--color-text);
+}
+
+.user-icon {
+    font-size: 40px;
+    line-height: 1;
+}
+
+.btn-logout {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--color-dark-beige);
+    color: var(--color-text);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-logout:hover {
+    background-color: #c9b48c;
+}
+
+.left-column {
+    display: grid;
+    grid-template-rows: auto auto;
+    gap: 20px;
+}
+
+.box {
+    background-color: var(--color-light-beige);
+    padding: 20px 25px;
+    border-radius: 10px;
+}
+
+.box h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--color-text);
+}
+
+.data-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.data-label {
+    width: 110px;
+    font-weight: 500;
+    color: var(--color-text);
+    white-space: nowrap;
+}
+
+.data-input {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid var(--color-dark-beige);
+    border-radius: 5px;
+    background-color: var(--color-white);
+    height: 35px;
+    font-size: 14px;
+}
+
+.other-box {
+    text-align: left;
+}
+
+.other-box ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.other-box ul li {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.other-box ul li a {
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+.other-box ul li a:hover {
+    text-decoration: underline;
+}
+
+.subjects-box {
+    grid-column: 2 / 3;
+}
+
+.subjects-list {
+    list-style: none;
+    padding: 0;
+    line-height: 1.6;
+    color: var(--color-text);
+    padding-left: 20px;
+}
+
+.subjects-list li {
+    margin-bottom: 10px;
+}
+
+/* ============================================
+   SIDEBAR MENU (Stari stili za meni strani)
+   ============================================ */
+
 .sidebar {
-  width: 300px;
-  background-color: #3c3836;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  box-sizing: border-box;
+    width: 300px;
+    background-color: #3c3836;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    box-sizing: border-box;
 }
 
 .menu-header {
-  background-color: #3b3a36; 
-  padding: 20px 15px 10px 15px;
-  font-size: 1.7em;
-  font-weight: 800;
-  text-align: center;
-  font-family: 'tahoma';
+    background-color: #3b3a36;
+    padding: 20px 15px 10px 15px;
+    font-size: 1.7em;
+    font-weight: 800;
+    text-align: center;
+    font-family: 'tahoma';
 }
 
 .nav-menu ul {
-  list-style: none;
-  padding: 0;
-  margin: 10px 0; 
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
 }
 
 .menu-item {
-  display: block;
-  background-color: #c78911; 
-  color: white;
-  text-decoration: none;
-  padding: 12px 25px;
-  margin: 15px 15px; 
-  border-radius: 10px;
-  text-align: center;
-  transition: background-color 0.2s;
-  font-size: 1.5em;
-  font-weight: bold;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: block;
+    background-color: #c78911;
+    color: white;
+    text-decoration: none;
+    padding: 12px 25px;
+    margin: 15px 15px;
+    border-radius: 10px;
+    text-align: center;
+    transition: background-color 0.2s;
+    font-size: 1.5em;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .menu-item:hover {
-  background-color: #d79921;
+    background-color: #d79921;
 }
 
-
 .menu-footer {
-  margin-top: auto;
-  padding: 15px 0 15px 0;
-  text-align: center;
+    margin-top: auto;
+    padding: 15px 0 15px 0;
+    text-align: center;
 }
 
 .logout-btn {
-  display: inline-block;
-  background-color: #c78911;
-  color: white;
-  text-decoration: none;
-  padding: 5px 25px;
-  border-radius: 10px;
-  font-size: 1em;
-  transition: background-color 0.2s;
-  font-weight: 600;
-  margin-bottom: 10px;
+    display: inline-block;
+    background-color: #c78911;
+    color: white;
+    text-decoration: none;
+    padding: 5px 25px;
+    border-radius: 10px;
+    font-size: 1em;
+    transition: background-color 0.2s;
+    font-weight: 600;
+    margin-bottom: 10px;
 }
 
 .logout-btn:hover {
-  background-color: #d79921;
+    background-color: #d79921;
 }
 
 .main-content {
-  flex-grow: 1; 
-  padding: 20px 40px; 
-  background-color: #202020; 
+    flex-grow: 1;
+    padding: 20px 40px;
+    background-color: #202020;
 }
 
 .subject-title {
-  font-size: 1.8em;
-  font-weight: 800;
-  color: #fff; 
-  margin-bottom: 25px;
-  margin-left: 17px;
+    font-size: 1.8em;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 25px;
+    margin-left: 17px;
 }
 
 .task-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-weight: bold;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
 }
 
-/* Okvir posamezne naloge */
 .task-item {
-  background-color: #665c54; 
-  padding: 15px 20px;
-  margin-bottom: 30px; 
-  border-radius: 10px;
-  font-size: 1.4em;
-  font-weight: bold;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center;
+    background-color: #665c54;
+    padding: 15px 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    font-size: 1.4em;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .task-item:hover {
-  background-color: #786e66; 
+    background-color: #786e66;
 }
 
-/* Gumb 'Uredi nalogo' znotraj okvirja */
 .edit-button {
-  background-color: #f7e6c4; 
-  color: black;
-  font-size: 0.9em;
-  font-weight: bold;
-  padding: 5px 20px;
-  border-radius: 10px;
-  text-decoration: none;
-  transition: background-color 0.2s;
-  cursor: pointer;
-  border: none;
-  white-space: nowrap; 
-  margin-left: 20px;
+    background-color: #f7e6c4;
+    color: black;
+    font-size: 0.9em;
+    font-weight: bold;
+    padding: 5px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background-color 0.2s;
+    cursor: pointer;
+    border: none;
+    white-space: nowrap;
+    margin-left: 20px;
 }
 
 .edit-button:hover {
-  background-color: #fcefd9;
+    background-color: #fcefd9;
 }
 
-/* Gumb 'Dodaj nalogo' (zelen) */
 .add-task-button {
-  display: inline-block;
-  background-color: #8fa04b; 
-  color: white;
-  font-size: 1.5em;
-  font-weight: bold;
-  padding: 12px 25px;
-  border-radius: 10px;
-  text-decoration: none;
-  margin-top: -5px; 
-  margin-left: 0px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.2s;
-  cursor: pointer;
+    display: inline-block;
+    background-color: #8fa04b;
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 12px 25px;
+    border-radius: 10px;
+    text-decoration: none;
+    margin-top: -5px;
+    margin-left: 0px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s;
+    cursor: pointer;
 }
 
 .add-task-button:hover {
-  background-color: #a0b462;
+    background-color: #a0b462;
 }
 
-/* --- DODATNI STILI (Prijavni/Meni box) --- */
 .container {
-  width: 100%;
-  height: 100%;
-  background: #282828;
-  display: flex;
-  justify-content: left;
-  align-items: left;
-  vertical-align:middle;
-}
-
-.login-box {
-  width: 100%;
-  padding: 20px;
-  background:#3c3836;
-  opacity: 0.74;
-  border-radius: 34px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  vertical-align: middle;
+    width: 100%;
+    height: 100%;
+    background: #282828;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    vertical-align: middle;
 }
 
 .meni-box {
-  width: 100%;
-  padding: 20px;
-  height: 100vh;
-  background:#3c3836;
-  opacity: 0.74;
-  border-top-right-radius: 34px;
-  border-bottom-right-radius: 34px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  vertical-align: middle;
+    width: 100%;
+    padding: 20px;
+    height: 100vh;
+    background: #3c3836;
+    opacity: 0.74;
+    border-top-right-radius: 34px;
+    border-bottom-right-radius: 34px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    vertical-align: middle;
 }
 
-.login-ubox{
-  width: 90%;
-  align-self: center;
-  align-items: center;
+.login-ubox {
+    width: 90%;
+    align-self: center;
+    align-items: center;
 }
 
 .login-title {
-  color: #ddd5c4;
-  font-family: Inter;
-  font-weight: Black;
-  font-size: 36px;
-  opacity: 1;
-  text-align: center;
-  align-items: center;
-  margin-bottom: 20px;
+    color: #ddd5c4;
+    font-family: Inter;
+    font-weight: Black;
+    font-size: 36px;
+    opacity: 1;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-.label{
-  font-family: Inter;
-  font-weight: Black;
-  font-size: 22px;
-  color: #ddd5c4;
-  margin-top: 10px;
+.label {
+    font-family: Inter;
+    font-weight: Black;
+    font-size: 22px;
+    color: #ddd5c4;
+    margin-top: 10px;
 }
 
 .input {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-
-.submit-button {
-  width: 100%;
-  padding: 10px;
-  background: rgba(215, 153, 33, 1);
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  border: none;
-  border-radius: 12px;
-  margin-top: 20px;
-  cursor: pointer;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
 }
 
 .meni-button {
-  width: 100%;
-  padding: 10px;
-  background: rgba(215, 153, 33, 1);
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  border: none;
-  border-radius: 12px;
-  margin-top: 20px;
-  cursor: pointer;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    padding: 10px;
+    background: rgba(215, 153, 33, 1);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    margin-top: 20px;
+    cursor: pointer;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .registracija-button {
-  width: 100%;
-  padding: 10px;
-  background: rgb(243, 197, 104);
-  color: black;
-  font-size: 18px;
-  font-weight: bold;
-  border: none;
-  border-radius: 12px;
-  margin-top: 20px;
-  cursor: pointer;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  outline-color: rgba(215, 153, 33, 1);
-  outline-style: auto;
+    width: 100%;
+    padding: 10px;
+    background: rgb(243, 197, 104);
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    margin-top: 20px;
+    cursor: pointer;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    outline-color: rgba(215, 153, 33, 1);
+    outline-style: auto;
 }
 
-.submit-button:hover,
-.registracija-button:hover{
-  background: rgba(181, 118, 20, 0.9);
+.registracija-button:hover {
+    background: rgba(181, 118, 20, 0.9);
+}
+
+/* ============================================
+   OCENE STRAN
+   ============================================ */
+
+.scores-box {
+    padding: 30px;
+    background-color: var(--color-light-beige);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.scores-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.scores-header h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--color-text);
+}
+
+.subject-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+    background-color: var(--color-dark-beige);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.subject-name,
+.subject-score {
+    padding: 10px 15px;
+    color: var(--color-text);
+}
+
+.subject-name {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.subject-score {
+    background-color: #e6d8b0;
+    text-align: center;
+}
+
+/* ============================================
+   URNIK STRAN
+   ============================================ */
+
+.schedule-box {
+    min-height: 500px;
+    padding: 30px;
+    background-color: var(--color-light-beige);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.schedule-box h3 {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--color-text);
+}
+
+/* ============================================
+   LIST UČENCEV STRAN
+   ============================================ */
+
+.table-box {
+    min-height: 500px;
+    padding: 30px;
+    background-color: var(--color-light-beige);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.student-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.5fr 1fr 1fr;
+    gap: 10px;
+    text-align: center;
+    color: var(--color-text);
+}
+
+.table-header {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--color-dark-beige);
+}
+
+.table-row {
+    display: contents;
+}
+
+.table-data {
+    padding: 10px 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.table-data-highlighted {
+    background-color: var(--color-dark-beige);
+    grid-column: 1 / 6;
+    display: grid;
+    grid-template-columns: subgrid;
+    border-radius: 5px;
+}
+
+.highlight-cell {
+    padding: 10px 5px;
+    color: var(--color-text);
+    background-color: #e6d8b0;
+    border-radius: 5px;
+}
+
+/* ============================================
+   PREDMETI STRAN
+   ============================================ */
+
+.subjects-list-box {
+    min-height: 500px;
+    padding: 30px;
+    background-color: var(--color-light-beige);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.subjects-list-box h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: var(--color-text);
+}
+
+.subject-row-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin-bottom: 10px;
+    background-color: var(--color-dark-beige);
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.subject-name-display {
+    padding: 10px 15px;
+    flex-grow: 1;
+    font-size: 16px;
+    color: var(--color-text);
+    background-color: #e6d8b0;
+}
+
+.btn-subject-edit {
+    padding: 10px 15px;
+    border: none;
+    background-color: var(--color-dark-beige);
+    color: var(--color-text);
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s;
+    border-radius: 0 5px 5px 0;
+}
+
+.btn-subject-edit:hover {
+    background-color: #c9b48c;
+}
+
+/* ============================================
+   GUMBI ZA UREJANJE
+   ============================================ */
+
+.btn-edit {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--color-dark-beige);
+    color: var(--color-text);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-edit:hover {
+    background-color: #c9b48c;
+}
+
+.btn-edit-main {
+    float: right;
+    margin-top: 20px;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--color-dark-beige);
+    color: var(--color-text);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-edit-main:hover {
+    background-color: #c9b48c;
 }

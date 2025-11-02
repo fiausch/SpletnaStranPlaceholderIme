@@ -1,0 +1,54 @@
+1.	SPLOŠNA NAVODILA
+
+Izdelava IS
+Osnovne informacije:
+skupina: 3 dijaki (1 vzdrževalec informacijskih sistemov + 2 razvijalca) + mentor(učitelj) 
+predviden čas dela: 6 tednov
+
+Cilj:
+•	izdelava spletne aplikacije s podatkovno bazo z uporabo sistema za verzije (Git Hub)
+•	postavitev aplikacije na strežniku z OS linux in postavitev v javno domeno
+
+Naloge po vlogah
+vzdrževalec IS:
+•	namestitev programske opreme na virtualnem računalniku (operacijski sistem - linux, SUPB - poljubno, spletni strežnik - poljubno)
+•	konfiguracija programske opreme
+•	vzpostavitev prostora za hranjenje verzij in teamsko delo (Git Hub)
+•	izdelava PB
+•	vstavljanje testnih podatkov
+•	postavitev javne domene
+•	dokumentacija
+o	nameščanja in konfiguracije strežnika
+o	programske rešitve
+razvijalca:
+•	specifikacije sistema
+•	načrtovanje PB
+o	hranjenje podatkov v najmanj 4 tabelah
+•	načrtovanje spletne aplikacije
+•	izdelava spletne aplikacije
+o	najmanj 5 podstrani
+o	prijava v sistem z najmanj dvema vrstama uporabnikov
+o	všečna oblika
+o	preprosta uporaba za delo podatki (vstavljanje, brisanje, spreminjanje)
+•	testiranje spletne aplikacije
+vsi:
+•	dnevno poročilo - kaj ste naredili na posamezen dan - vsak član skupine napiše za sebe datum + natančno poročilo kaj je delal, kaj je naredil, česa mu ni uspelo narediti, zakaj mu ni uspelo
+•	hranjenje vseh verzij spletne aplikacije in skupna raba celotnega projekta na Git Hubu
+
+2.	VSEBINSKA NAVODILA
+Izdelajte spletno aplikacijo za podporo šolskega dela na daljavo. Sistem naj omogoča tri poglede:
+administrator
+•	vpis / popravljanje / brisanje predmetov (najmanj 10), 
+•	vpis / popravljanje / brisanje učiteljev (najmanj 20) in določanje, kateri učitelji poučujejo katere predmete (obstajati morajo predmeti, ki jih poučuje več učiteljev in učitelji, ki poučujejo več predmetov)
+•	vpis / popravljanje / brisanje učencev (najmanj 100) in določanje, kateri učenci obiskujejo katere predmete (vsi učenci morajo obiskovati več kot enega)
+•	podatke lahko vpišete direktno v bazo, ne glede na to pa mora aplikacija omogočati vso zgoraj navedeno funkcionalnost
+učitelj
+•	ima možnost nalaganja in brisanja gradiv za izbrani predmet (samo za predmete, ki jih poučuje)
+•	ima možnost pregledovanja nalog, ki so jih učenci oddali za izbrani predmet
+učenec
+•	možnost registracije ter urejanja profila
+•	vpogled v gradiva izbranega predmeta s seznama
+•	možnost določanja seznama predmetov, ki jih obiskuje in popravkov seznama
+•	možnost oddaje nalog pri predmetih s seznama, pri čemer mora sistem poskrbeti, da bo datoteka na strežniku shranjena z imenom Priimek Ime – Naslov naloge in ustrezno končnico, ponovna oddaja naj povozi prejšnjo datoteko (če učenec to potrdi!) 
+
+
