@@ -1,6 +1,4 @@
--- Vstavljanje testnih podatkov v bazo
 
--- 1. PREDMETI 
 INSERT INTO `predmeti` (`id`, `ime`, `koda`, `opis`, `status`) VALUES
 (1, 'Matematika', 'MAT', 'Osnove matematike in algebra', 'aktiven'),
 (2, 'Slovenski jezik', 'SLO', 'Slovenska slovnica in književnost', 'aktiven'),
@@ -13,13 +11,9 @@ INSERT INTO `predmeti` (`id`, `ime`, `koda`, `opis`, `status`) VALUES
 (9, 'Biologija', 'BIO', 'Živi svet in ekosistemi', 'aktiven'),
 (10, 'Glasbena vzgoja', 'GLA', 'Glasbena teorija in praksa', 'aktiven');
 
--- 2. UPORABNIKI (administratorji, učitelji, učenci)
--- gesla so samo geslo123 ker sem ne originalen, z imeni sem originalen ker sem kreativen genij, kar tako.
 INSERT INTO `uporabniki` (`id`, `ime`, `priimek`, `uporabnisko_ime`, `email`, `geslo`, `vloga`, `datum_registracije`, `status`) VALUES
--- Administratorji
 (1, 'Admin', 'Sistemski', 'admin', 'admin@sola.si', 'geslo123', 'administrator', NOW(), 'aktiven'),
 
--- Učitelji (vsaj 20)
 (2, 'Tijan', 'Antunovic', 'tantunovic', 'Tijan.Antunovic@sola.si', 'geslo123', 'ucitelj', NOW(), 'aktiven'),
 (3, 'Valentina', 'Hrastnik', 'vhrastnik', 'Valentina.Hrastnik@sola.si', 'geslo123', 'ucitelj', NOW(), 'aktiven'),
 (4, 'David', 'Brezovnik', 'dbrezovnik', 'David.Brezovnik@sola.si', 'geslo123', 'ucitelj', NOW(), 'aktiven'),
@@ -41,9 +35,8 @@ INSERT INTO `uporabniki` (`id`, `ime`, `priimek`, `uporabnisko_ime`, `email`, `g
 (20, 'David', 'Lukman', 'dlukman', 'David.Lukman@sola.si', 'geslo123', 'ucitelj', NOW(), 'aktiven'),
 (21, 'Miha', 'Stramsak', 'mstramsak', 'Miha.Stramsak@sola.si', 'geslo123', 'ucitelj', NOW(), 'aktiven'),
 
--- Učenci (prvih 10 od vsaj 100)
 (22, 'Miha', 'Znidarsic', 'mznidarsic', 'Miha.Znidarsic@dijak.si', 'geslo123', 'ucenec', NOW(), 'aktiven'),
-(23, 'Srecko', 'Kosovel', 'skosovel', 'Srecko@Kosovel.si', 'geslo123', 'ucenec', NOW(), 'aktiven'),
+(23, 'Srecko', 'Kosovel', 'srkosovel', 'Srecko@Kosovel.si', 'geslo123', 'ucenec', NOW(), 'aktiven'),
 (24, 'Slavko', 'Grum', 'sgrum', 'Slavko.Grum@dijak.si', 'geslo123', 'ucenec', NOW(), 'aktiven'),
 (25, 'Lovro', 'Kuhar', 'lkuhar', 'Lovro.Kuhar@dijak.si', 'geslo123', 'ucenec', NOW(), 'aktiven'),
 (26, 'Franz', 'Kafka', 'fkafka', 'Franz.Kafka@dijak.si', 'geslo123', 'ucenec', NOW(), 'aktiven'),
@@ -51,9 +44,8 @@ INSERT INTO `uporabniki` (`id`, `ime`, `priimek`, `uporabnisko_ime`, `email`, `g
 (28, 'Rebeka', 'Kuang', 'rkuang', 'Rebeka.Kuang@dijak.si', 'geslo123', 'ucenec', NOW(), 'aktiven'),
 (29, 'Janez', 'Golob', 'jgolob', 'janez.golob@dijak.si', 'geslo123', 'ucenec', NOW(), 'aktiven'),
 (30, 'Robert', 'Jansa', 'rjansa', 'Robert.JAnsa@dijak.si', 'geslo123', 'ucenec', NOW(), 'aktiven'),
-(31, 'Slavko', 'Kosovel', 'skosovel', 'Slavko.Kosovel@dijak.si', 'geslo123', 'ucenec', NOW(), 'aktiven');
+(31, 'Slavko', 'Kosovel', 'slkosovel', 'Slavko.Kosovel@dijak.si', 'geslo123', 'ucenec', NOW(), 'aktiven');
 
--- 3. POVEZAVE UČITELJI-PREDMETI (učitelji poučujejo več predmetov)
 INSERT INTO `ucitelji_predmeti` (`id_ucitelja`, `id_predmeta`) VALUES
 (2, 1), (2, 2),   -- Marija Novak poučuje Matematiko in Slovenski jezik
 (3, 3), (3, 7),   -- Peter Kovač poučuje Angleščino in Geografijo
@@ -76,7 +68,6 @@ INSERT INTO `ucitelji_predmeti` (`id_ucitelja`, `id_predmeta`) VALUES
 (20, 2), (20, 4), -- Simona Knez poučuje Slovenski jezik in Fiziko
 (21, 5), (21, 6); -- Luka Bergant poučuje Kemijo in Zgodovino
 
--- 4. POVEZAVE UČENCI-PREDMETI (učenci obiskujejo več predmetov)
 INSERT INTO `ucenci_predmeti` (`id_ucenca`, `id_predmeta`, `datum_vpisa`, `status`) VALUES
 (22, 1, '2024-09-01', 'vpisano'), (22, 2, '2024-09-01', 'vpisano'), (22, 3, '2024-09-01', 'vpisano'),
 (23, 1, '2024-09-01', 'vpisano'), (23, 4, '2024-09-01', 'vpisano'), (23, 8, '2024-09-01', 'vpisano'),
@@ -89,15 +80,13 @@ INSERT INTO `ucenci_predmeti` (`id_ucenca`, `id_predmeta`, `datum_vpisa`, `statu
 (30, 2, '2024-09-01', 'vpisano'), (30, 8, '2024-09-01', 'vpisano'), (30, 9, '2024-09-01', 'vpisano'),
 (31, 3, '2024-09-01', 'vpisano'), (31, 4, '2024-09-01', 'vpisano'), (31, 10, '2024-09-01', 'vpisano');
 
--- 5. NALOGE
-INSERT INTO `naloge` (`id`, `naslov`, `navodila`, `rok_oddaje`, `maksimalna_ocena`, `id_predmeta`, `id_avtorja`, `datum_objave`, `status`) VALUES
+INSERT INTO `naloge` (`id`, `naslov`, `navodila`, `rok_addaje`, `maksimalna_ocena`, `id_predmeta`, `id_avtorja`, `datum_objave`, `status`) VALUES
 (1, 'Algebraične enačbe', 'Rešite naslednje algebraične enačbe in prikažite postopek reševanja.', '2024-10-15 23:59:00', 10, 1, 2, NOW(), 'aktiven'),
 (2, 'Analiza pesmi', 'Analizirajte pesem \"Sonetni venec\" in opišite njene tematske značilnosti.', '2024-10-20 23:59:00', 10, 2, 8, NOW(), 'aktiven'),
 (3, 'English Essay', 'Write a 300-word essay about your favorite hobby.', '2024-10-18 23:59:00', 10, 3, 3, NOW(), 'aktiven'),
 (4, 'Newtonovi zakoni', 'Razložite Newtonove zakone gibanja s primeri iz vsakdanjega življenja.', '2024-10-22 23:59:00', 10, 4, 4, NOW(), 'aktiven'),
 (5, 'Kemijske reakcije', 'Opišite različne vrste kemijskih reakcij in navedite primere.', '2024-10-25 23:59:00', 10, 5, 10, NOW(), 'aktiven');
 
--- 6. GRADIVA
 INSERT INTO `gradiva` (`id`, `naslov`, `vsebina`, `tip`, `pot_do_datoteke`, `id_predmeta`, `id_avtorja`, `datum_objave`, `status`) VALUES
 (1, 'Uvod v algebro', 'Osnove algebraičnih izrazov in enačb.', 'dokument', '/gradiva/matematika/uvod_algebra.pdf', 1, 2, NOW(), 'aktiven'),
 (2, 'Slovenska slovnica', 'Pregled slovničnih pravil in razlag.', 'dokument', '/gradiva/slovenscina/slovnica.pdf', 2, 8, NOW(), 'aktiven'),
@@ -105,7 +94,6 @@ INSERT INTO `gradiva` (`id`, `naslov`, `vsebina`, `tip`, `pot_do_datoteke`, `id_
 (4, 'Mehanika tekočin', 'Osnove mehanike tekočin in hidrodinamike.', 'dokument', '/gradiva/fizika/tekočine.pdf', 4, 4, NOW(), 'aktiven'),
 (5, 'Periodni sistem', 'Interaktivni periodni sistem elementov.', 'povezava', 'https://www.rsc.org/periodic-table', 5, 10, NOW(), 'aktiven');
 
--- 7. ODDANE NALOGE
 INSERT INTO `oddaje` (`id_naloge`, `id_ucenca`, `datum_oddaje`, `pot_do_datoteke`, `originalno_ime_datoteke`, `status`) VALUES
 (1, 22, '2024-10-10 14:30:00', '/oddaje/naloga1/Mlakar_Ana_Algebraične_enačbe.pdf', 'algebra_resitve.pdf', 'oddano'),
 (1, 23, '2024-10-11 09:15:00', '/oddaje/naloga1/Kos_Nejc_Algebraične_enačbe.docx', 'matematika.docx', 'v_ocenjevanju'),
