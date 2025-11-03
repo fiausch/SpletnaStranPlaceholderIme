@@ -1,15 +1,14 @@
-
 INSERT INTO `predmeti` (`id`, `ime`, `koda`, `opis`, `status`) VALUES
-(1, 'Matematika', 'MAT', 'Osnove matematike in algebra', 'aktiven'),
+(1, 'Matematika', 'MAT', 'Osnove matematike in linearna algebra', 'aktiven'),
 (2, 'Slovenski jezik', 'SLO', 'Slovenska slovnica in književnost', 'aktiven'),
-(3, 'Angleščina', 'ANG', 'Angleški jezik in komunikacija', 'aktiven'),
-(4, 'Fizika', 'FIZ', 'Osnove fizike in mehanike', 'aktiven'),
+(3, 'Angleščina', 'ANG', 'Angleški jezik', 'aktiven'),
+(4, 'Fizika', 'FIZ', 'Osnove sile fizike', 'aktiven'),
 (5, 'Kemija', 'KEM', 'Kemijske reakcije in snovi', 'aktiven'),
 (6, 'Zgodovina', 'ZGO', 'Svetovna in slovenska zgodovina', 'aktiven'),
-(7, 'Geografija', 'GEO', 'Zemljepis in regionalne študije', 'aktiven'),
-(8, 'Računalništvo', 'RAC', 'Programiranje in računalniške osnove', 'aktiven'),
+(7, 'Geografija', 'GEO', 'Zemljepis in reliefi', 'aktiven'),
+(8, 'Računalništvo', 'NRP', 'Programiranje in računalniške osnove', 'aktiven'),
 (9, 'Biologija', 'BIO', 'Živi svet in ekosistemi', 'aktiven'),
-(10, 'Glasbena vzgoja', 'GLA', 'Glasbena teorija in praksa', 'aktiven');
+(10, 'Stroka moderne vsebine', 'SMV', 'Racunalnistvo teorija in praksa', 'aktiven');
 
 INSERT INTO `uporabniki` (`id`, `ime`, `priimek`, `uporabnisko_ime`, `email`, `geslo`, `vloga`, `datum_registracije`, `status`) VALUES
 (1, 'Admin', 'Sistemski', 'admin', 'admin@sola.si', 'geslo123', 'administrator', NOW(), 'aktiven'),
@@ -47,26 +46,7 @@ INSERT INTO `uporabniki` (`id`, `ime`, `priimek`, `uporabnisko_ime`, `email`, `g
 (31, 'Slavko', 'Kosovel', 'slkosovel', 'Slavko.Kosovel@dijak.si', 'geslo123', 'ucenec', NOW(), 'aktiven');
 
 INSERT INTO `ucitelji_predmeti` (`id_ucitelja`, `id_predmeta`) VALUES
-(2, 1), (2, 2),   -- Marija Novak poučuje Matematiko in Slovenski jezik
-(3, 3), (3, 7),   -- Peter Kovač poučuje Angleščino in Geografijo
-(4, 4), (4, 5),   -- Ana Horvat poučuje Fiziko in Kemijo
-(5, 6),           -- Janez Potokar poučuje Zgodovino
-(6, 8), (6, 9),   -- Irena Zupan poučuje Računalništvo in Biologijo
-(7, 10),          -- Marko Vidmar poučuje Glasbeno vzgojo
-(8, 1), (8, 4),   -- Tanja Kralj poučuje Matematiko in Fiziko
-(9, 2), (9, 3),   -- Bojan Petek poučuje Slovenski jezik in Angleščino
-(10, 5), (10, 9), -- Nina Rozman poučuje Kemijo in Biologijo
-(11, 6), (11, 7), -- Gregor Bizjak poučuje Zgodovino in Geografijo
-(12, 8),          -- Katarina Jereb poučuje Računalništvo
-(13, 10),         -- Rok Sever poučuje Glasbeno vzgojo
-(14, 1), (14, 5), -- Maja Koren poučuje Matematiko in Kemijo
-(15, 2), (15, 6), -- Dejan Logar poučuje Slovenski jezik in Zgodovino
-(16, 3), (16, 7), -- Sabina Dolenc poučuje Angleščino in Geografijo
-(17, 4), (17, 8), -- Tomaž Zajc poučuje Fiziko in Računalništvo
-(18, 9), (18, 10),-- Alenka Potočnik poučuje Biologijo in Glasbeno vzgojo
-(19, 1), (19, 3), -- Branko Lesjak poučuje Matematiko in Angleščino
-(20, 2), (20, 4), -- Simona Knez poučuje Slovenski jezik in Fiziko
-(21, 5), (21, 6); -- Luka Bergant poučuje Kemijo in Zgodovino
+(2, 1), (2, 2), (3, 3), (3, 7),(4, 4), (4, 5), (5, 6),(6, 8), (6, 9), (7, 10), (8, 1), (8, 4), (9, 2), (9, 3),(10, 5), (10, 9), (11, 6), (11, 7), (12, 8), (13, 10), (14, 1), (14, 5), (15, 2), (15, 6), (16, 3), (16, 7), (17, 4), (17, 8), (18, 9), (18, 10),(19, 1), (19, 3),(20, 2), (20, 4), (21, 5), (21, 6); 
 
 INSERT INTO `ucenci_predmeti` (`id_ucenca`, `id_predmeta`, `datum_vpisa`, `status`) VALUES
 (22, 1, '2024-09-01', 'vpisano'), (22, 2, '2024-09-01', 'vpisano'), (22, 3, '2024-09-01', 'vpisano'),
