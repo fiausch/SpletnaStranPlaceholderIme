@@ -7,7 +7,7 @@ $vloga = $uporabnik['vloga'];
 
 // Ta stran je na voljo samo za profesorje in administratorje
 if ($vloga !== 'ucitelj' && $vloga !== 'administrator') {
-    header('Location: index_prijava.php');
+    header('Location: index.php');
     exit;
 }
 ?>

@@ -36,7 +36,7 @@ function je_prijavljen() {
 // Funkcija za zahtevanje prijave
 function zahtevaj_prijavo() {
     if (!je_prijavljen()) {
-        header('Location: index_prijava.php');
+        header('Location: index.php');
         exit;
     }
 }
@@ -102,7 +102,7 @@ function izpisi() {
     session_destroy();
     setcookie('prijavljen', '', time() - 3600, '/');
     setcookie('uporabnik_id', '', time() - 3600, '/');
-    header('Location: index_prijava.php');
+    header('Location: index.php');
     exit;
 }
 ?>

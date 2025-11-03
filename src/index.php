@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <p style="color: red; margin-bottom: 15px;"><?php echo htmlspecialchars($napaka); ?></p>
             <?php endif; ?>
 
-            <form method="POST" action="index_prijava.php">
+            <form method="POST" action="index.php">
                 <label for="email">E-mail:</label>
                 <input type="email" id="email" name="email" required>
 

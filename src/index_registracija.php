@@ -92,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <button type="submit" class="btn-submit">Vpis</button>
             </form>
 
-            <a href="index_prijava.php" class="login-link">Prijava</a>
+            <a href="index.php" class="login-link">Prijava</a>
         </div>
     </div>
 </body>
