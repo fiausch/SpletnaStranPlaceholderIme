@@ -11,39 +11,41 @@ $urnik_podatki = [];
 $sporocilo = "";
 
 try {
-    // PRIDOBIVANJE PODATKOV ZA URNIK (Primer za učenca)
     if ($vloga === 'ucenec') {
-        // Opomba: Za polno funkcionalnost bi morali najprej pridobiti razred učenca 
-        // in nato urnik za ta razred. Za začetek bomo pridobili urnik neposredno.
-        
-        // Ta poizvedba zahteva dodatne tabele (npr. razredi, urnik_razredi) ali pa 
-        // se bo uporabljala predpostavka, da vsak učenec sledi svojemu razredu.
-        
-        // Ker urnik ni definiran v vaši PB, je tukaj splošen primer,
-        // ki zahteva, da sami definirate logiko pridobivanja.
-        
-        // OSNUTKOVNA POIZVEDBA:
-        // $stmt_urnik = $pdo->prepare("SELECT ... FROM urnik WHERE id_razreda = ? ORDER BY dan, ura");
-        // $stmt_urnik->execute([$uporabnik['id_razreda']]); // Predpostavimo, da je id_razreda v tabeli uporabniki
-        // $urnik_podatki = $stmt_urnik->fetchAll(PDO::FETCH_ASSOC);
-        
-        $sporocilo = "Trenutno ni podatkov za urnik. Dodajte tabelo 'urnik' v bazo in določite relacijo med učencem in urnikom.";
+        $stmt_urnik = $pdo->prepare(
+            "SELECT u.dan, u.ura, u.ucilnica, p.koda, p.ime
+             FROM urnik u
+             JOIN predmeti p ON p.id = u.id_predmeta
+             JOIN ucenci_predmeti up ON up.id_predmeta = p.id
+             WHERE up.id_ucenca = ?
+               AND up.status = 'vpisano'
+               AND u.status = 'aktiven'
+               AND p.status = 'aktiven'
+             ORDER BY FIELD(u.dan,'pon','tor','sre','cet','pet'), u.ura, p.ime"
+        );
+        $stmt_urnik->execute([$uporabnik_id]);
+        $vrstice = $stmt_urnik->fetchAll(PDO::FETCH_ASSOC);
+
+        $dni = ['pon','tor','sre','cet','pet'];
+        $urnik_podatki = [];
+        $maxUra = 0;
+        foreach ($vrstice as $r) {
+            $dan = $r['dan'];
+            $ura = (int)$r['ura'];
+            $vsebina = $r['koda'] . (isset($r['ucilnica']) && $r['ucilnica'] !== '' ? ' (' . $r['ucilnica'] . ')' : '');
+            if (!isset($urnik_podatki[$ura])) { $urnik_podatki[$ura] = []; }
+            if (!isset($urnik_podatki[$ura][$dan])) { $urnik_podatki[$ura][$dan] = []; }
+            $urnik_podatki[$ura][$dan][] = $vsebina;
+            if ($ura > $maxUra) { $maxUra = $ura; }
+        }
+        if ($maxUra === 0) {
+            $sporocilo = "Za vašo vlogo trenutno ni podatkov za urnik.";
+        }
 
     } elseif ($vloga === 'ucitelj') {
-        // PRIDOBIVANJE PODATKOV ZA UČITELJA (njegove ure)
-        // Podobno, potrebna tabela urnik z relacijo do predmetov in učiteljev.
-        
-        // $stmt_urnik = $pdo->prepare("SELECT ... FROM urnik JOIN predmeti p ON ... JOIN ucitelji_predmeti up ON ... WHERE up.id_ucitelja = ? ORDER BY dan, ura");
-        // $stmt_urnik->execute([$uporabnik_id]);
-        // $urnik_podatki = $stmt_urnik->fetchAll(PDO::FETCH_ASSOC);
-
         $sporocilo = "Trenutno ni podatkov za urnik. Dodajte tabelo 'urnik' v bazo.";
         
     } elseif ($vloga === 'administrator') {
-        // PRIDOBIVANJE VSEH PODATKOV (če je to potrebno)
-        // $stmt_urnik = $pdo->query("SELECT * FROM urnik ORDER BY dan, ura");
-        // $urnik_podatki = $stmt_urnik->fetchAll(PDO::FETCH_ASSOC);
-        
         $sporocilo = "Trenutno ni podatkov za urnik. Dodajte tabelo 'urnik' v bazo.";
     }
 
@@ -87,17 +89,38 @@ try {
             
             <?php if (!empty($sporocilo)): ?>
                 <p style="color: red; text-align: center; margin-top: 20px;"><?php echo htmlspecialchars($sporocilo); ?></p>
-            <?php elseif (!empty($urnik_podatki)): ?>
+            <?php elseif (!empty($urnik_podatki) && $vloga === 'ucenec'): ?>
                 <table>
                     <thead>
                         <tr>
                             <th>Ura</th>
                             <th>Ponedeljek</th>
                             <th>Torek</th>
-                            </tr>
+                            <th>Sreda</th>
+                            <th>Četrtek</th>
+                            <th>Petek</th>
+                        </tr>
                     </thead>
                     <tbody>
-                        </tbody>
+                        <?php
+                        $dniVrstniRed = ['pon','tor','sre','cet','pet'];
+                        $zgornjaUra = isset($maxUra) && $maxUra > 0 ? max(10, $maxUra) : 10;
+                        for ($h = 1; $h <= $zgornjaUra; $h++): ?>
+                            <tr>
+                                <td><?php echo $h; ?></td>
+                                <?php foreach ($dniVrstniRed as $d): ?>
+                                    <td>
+                                        <?php
+                                        $celice = $urnik_podatki[$h][$d] ?? [];
+                                        if ($celice) {
+                                            echo nl2br(htmlspecialchars(implode("\n", $celice)));
+                                        }
+                                        ?>
+                                    </td>
+                                <?php endforeach; ?>
+                            </tr>
+                        <?php endfor; ?>
+                    </tbody>
                 </table>
             <?php else: ?>
                  <p style="text-align: center; margin-top: 20px;">Za vašo vlogo trenutno ni podatkov za urnik.</p>
