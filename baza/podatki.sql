@@ -79,3 +79,31 @@ INSERT INTO `oddaje` (`id_naloge`, `id_ucenca`, `datum_oddaje`, `pot_do_datoteke
 (1, 23, '2024-10-11 09:15:00', '/oddaje/naloga1/Kos_Nejc_Algebraične_enačbe.docx', 'matematika.docx', 'v_ocenjevanju'),
 (2, 24, '2024-10-12 16:45:00', '/oddaje/naloga2/Zupančič_Eva_Analiza_pesmi.pdf', 'analiza_sonetni_venec.pdf', 'ocenjeno'),
 (3, 25, '2024-10-09 11:20:00', '/oddaje/naloga3/Jerman_Matic_English_Essay.docx', 'my_hobby_essay.docx', 'oddano');
+
+-- Tabela za ocene
+CREATE TABLE `ocene` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `id_ucenca` INT NOT NULL,
+    `id_naloge` INT NOT NULL,
+    `ocena` DECIMAL(5, 2) NOT NULL,
+    `komentar` TEXT,
+    `datum_ocenjevanja` DATETIME DEFAULT NOW(),
+    FOREIGN KEY (`id_ucenca`) REFERENCES `uporabniki`(`id`),
+    FOREIGN KEY (`id_naloge`) REFERENCES `naloge`(`id`)
+);
+
+-- Tabela za pravice uporabnikov
+CREATE TABLE `pravice` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `id_uporabnika` INT NOT NULL,
+    `pravica` ENUM('dodajanje_nalog', 'ocenjevanje', 'oddajanje_nalog') NOT NULL,
+    FOREIGN KEY (`id_uporabnika`) REFERENCES `uporabniki`(`id`)
+);
+
+-- Dodajanje privzetih pravic za učitelje in učence
+INSERT INTO `pravice` (`id_uporabnika`, `pravica`) 
+SELECT `id`, 'dodajanje_nalog' FROM `uporabniki` WHERE `vloga` = 'ucitelj';
+INSERT INTO `pravice` (`id_uporabnika`, `pravica`) 
+SELECT `id`, 'ocenjevanje' FROM `uporabniki` WHERE `vloga` = 'ucitelj';
+INSERT INTO `pravice` (`id_uporabnika`, `pravica`) 
+SELECT `id`, 'oddajanje_nalog' FROM `uporabniki` WHERE `vloga` = 'ucenec';
