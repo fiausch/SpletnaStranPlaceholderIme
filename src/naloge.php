@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $sporocilo = "Napaka: Ne smete dodajati nalog za ta predmet.";
     } else {
         try {
-            $stmt = $pdo->prepare("INSERT INTO naloge (naslov, navodila, rok_oddaje, id_predmeta, id_avtorja, datum_objave, status) 
+            $stmt = $pdo->prepare("INSERT INTO naloge (naslov, navodila, rok_addaje, id_predmeta, id_avtorja, datum_objave, status) 
                                    VALUES (?, ?, ?, ?, ?, NOW(), 'aktiven')");
             $stmt->execute([$naslov, $navodila, $rok_oddaje, $id_predmeta, $ucitelj_id]);
             $sporocilo = "Naloga uspešno dodana.";

@@ -22,7 +22,7 @@ $vloga = $uporabnik['vloga'];
             <a href="list_ucencov.php">Učenci</a>
         <?php endif; ?>
         <?php if ($vloga === 'administrator'): ?>
-            <a href="#">Profesorji</a>
+            <a href="upravljanje_ucitelji.php">Profesorji</a>
         <?php endif; ?>
         <a href="meni.php">Meni</a>
     </nav>

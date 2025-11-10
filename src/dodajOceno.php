@@ -64,20 +64,54 @@ if ($izbran_predmet_id) {
 }
 
 
+// Preveri, če je prišel direktni id_oddaje (iz pregled_oddanih_nalog.php)
+$id_oddaje_direktno = $_GET['id_oddaje'] ?? null;
+if ($id_oddaje_direktno) {
+    try {
+        $stmt = $pdo->prepare("
+            SELECT o.id, o.id_naloge, n.id_predmeta, n.naslov as naloga_naslov, 
+                   u.ime, u.priimek, o.datum_oddaje, o.ocena, o.komentar
+            FROM oddaje o
+            JOIN naloge n ON o.id_naloge = n.id
+            JOIN uporabniki u ON o.id_ucenca = u.id
+            WHERE o.id = ?
+        ");
+        $stmt->execute([$id_oddaje_direktno]);
+        $oddaja_direktno = $stmt->fetch();
+        if ($oddaja_direktno) {
+            $izbran_predmet_id = $oddaja_direktno['id_predmeta'];
+            // Preveri, če učitelj poučuje ta predmet
+            $je_njegov_predmet = false;
+            foreach ($predmeti as $p) {
+                if ((int)$p['id'] === (int)$izbran_predmet_id) {
+                    $je_njegov_predmet = true;
+                    break;
+                }
+            }
+            if (!$je_njegov_predmet) {
+                die("Dostop zavrnjen.");
+            }
+        }
+    } catch (PDOException $e) {
+        die("Napaka: " . $e->getMessage());
+    }
+}
+
 // 3. OBDELAVA FORME ZA OCENJEVANJE
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['oddaja_id'])) {
     $oddaja_id = $_POST['oddaja_id'];
     $ocena = $_POST['ocena'] ?? null;
     $komentar = $_POST['komentar'] ?? '';
+    $id_predmeta_redirect = $_POST['id_predmeta'] ?? $izbran_predmet_id;
 
-    if (empty($ocena) || $ocena < 1 || $ocena > 5) {
-        $sporocilo = "Ocena mora biti med 1 in 5.";
+    if (empty($ocena) || $ocena < 1 || $ocena > 10) {
+        $sporocilo = "Ocena mora biti med 1 in 10.";
     } else {
         try {
             // Posodobimo tabelo oddaje z oceno in komentarjem
             $stmt = $pdo->prepare("
                 UPDATE oddaje 
-                SET ocena = :ocena, komentar = :komentar, status = 'ocenjeno'
+                SET ocena = :ocena, komentar = :komentar, status = 'ocenjeno', datum_ocenjevanja = NOW()
                 WHERE id = :oddaja_id
             ");
             $stmt->execute([
@@ -87,8 +121,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['oddaja_id'])) {
             ]);
             $sporocilo = "Ocena uspešno dodana!";
 
-            // Po uspešnem ocenjevanju preusmerimo, da se osveži seznam (POST/Redirect/GET)
-            header("Location: dodajOceno.php?predmet_id=" . $izbran_predmet_id . "&uspeh=" . urlencode($sporocilo));
+            // Preusmeri nazaj na pregled oddanih nalog
+            if (isset($_POST['id_predmeta'])) {
+                header("Location: pregled_oddanih_nalog.php?id_predmeta=" . $id_predmeta_redirect . "&uspeh=" . urlencode($sporocilo));
+            } else {
+                header("Location: dodajOceno.php?predmet_id=" . $izbran_predmet_id . "&uspeh=" . urlencode($sporocilo));
+            }
             exit;
 
         } catch (PDOException $e) {
@@ -143,7 +181,25 @@ if (isset($_GET['uspeh'])) {
                 </select>
             </form>
 
-            <?php if ($izbran_predmet_id && empty($oddaje_za_ocenjevanje)): ?>
+            <?php if ($id_oddaje_direktno && isset($oddaja_direktno)): ?>
+                <div class="oddaja-item">
+                    <strong>Naloga: <?php echo htmlspecialchars($oddaja_direktno['naloga_naslov']); ?></strong>
+                    <div class="meta">Učenec: <?php echo htmlspecialchars($oddaja_direktno['ime'] . ' ' . $oddaja_direktno['priimek']); ?> (Oddano: <?php echo date('d.m.Y H:i', strtotime($oddaja_direktno['datum_oddaje'])); ?>)</div>
+                    
+                    <form method="POST" action="dodajOceno.php" style="margin-top: 10px;">
+                        <input type="hidden" name="oddaja_id" value="<?php echo htmlspecialchars($id_oddaje_direktno); ?>">
+                        <input type="hidden" name="id_predmeta" value="<?php echo htmlspecialchars($oddaja_direktno['id_predmeta']); ?>">
+
+                        <label for="ocena_direktno">Ocena (1-10):</label>
+                        <input type="number" id="ocena_direktno" name="ocena" min="1" max="10" value="<?php echo $oddaja_direktno['ocena'] ?? ''; ?>" required style="width: 80px; display: inline-block; margin-right: 15px;">
+
+                        <label for="komentar_direktno">Komentar:</label>
+                        <textarea id="komentar_direktno" name="komentar" rows="2" style="width: 100%;"><?php echo htmlspecialchars($oddaja_direktno['komentar'] ?? ''); ?></textarea>
+                        
+                        <button type="submit">Ocenite</button>
+                    </form>
+                </div>
+            <?php elseif ($izbran_predmet_id && empty($oddaje_za_ocenjevanje)): ?>
                 <p style="margin-top: 20px; text-align: center;">Za ta predmet ni neoddanih nalog za ocenjevanje.</p>
             <?php elseif (!empty($oddaje_za_ocenjevanje)): ?>
                 <div class="oddaja-list">
@@ -156,8 +212,8 @@ if (isset($_GET['uspeh'])) {
                                 <input type="hidden" name="oddaja_id" value="<?php echo htmlspecialchars($oddaja['oddaja_id']); ?>">
                                 <input type="hidden" name="id_predmeta" value="<?php echo htmlspecialchars($izbran_predmet_id); ?>">
 
-                                <label for="ocena_<?php echo $oddaja['oddaja_id']; ?>">Ocena (1-5):</label>
-                                <input type="number" id="ocena_<?php echo $oddaja['oddaja_id']; ?>" name="ocena" min="1" max="5" required style="width: 80px; display: inline-block; margin-right: 15px;">
+                                <label for="ocena_<?php echo $oddaja['oddaja_id']; ?>">Ocena (1-10):</label>
+                                <input type="number" id="ocena_<?php echo $oddaja['oddaja_id']; ?>" name="ocena" min="1" max="10" required style="width: 80px; display: inline-block; margin-right: 15px;">
 
                                 <label for="komentar_<?php echo $oddaja['oddaja_id']; ?>">Komentar:</label>
                                 <textarea id="komentar_<?php echo $oddaja['oddaja_id']; ?>" name="komentar" rows="2" style="width: 100%;"></textarea>

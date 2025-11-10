@@ -1,0 +1,13 @@
+# Omogoči nalaganje datotek
+php_value upload_max_filesize 10M
+php_value post_max_size 10M
+php_value max_execution_time 300
+php_value max_input_time 300
+
+# Zaščita upload direktorijev
+<DirectoryMatch "^.*/uploads/.*">
+    Options -ExecCGI
+    php_flag engine off
+    AddType text/plain .php .php3 .phtml .pht
+</DirectoryMatch>
+

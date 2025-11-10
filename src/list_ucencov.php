@@ -26,7 +26,7 @@ if ($vloga !== 'ucitelj' && $vloga !== 'administrator') {
         <a href="predmeti.php">Spletna učilnica</a>
         <a href="#" class="active">Učenci</a>
         <?php if ($vloga === 'administrator'): ?>
-            <a href="#">Profesorji</a>
+            <a href="upravljanje_ucitelji.php">Profesorji</a>
         <?php endif; ?>
         <a href="meni.php">Meni</a>
     </nav>

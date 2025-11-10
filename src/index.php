@@ -19,7 +19,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute([$email]);
             $uporabnik = $stmt->fetch();
             
-            if ($uporabnik && password_verify($geslo, $uporabnik['geslo'])) {
+            // Preveri geslo (podpora za hashana in plain text gesla - za kompatibilnost)
+            $geslo_ok = false;
+            if (password_verify($geslo, $uporabnik['geslo'])) {
+                $geslo_ok = true;
+            } elseif ($uporabnik['geslo'] === $geslo) {
+                // Fallback za plain text gesla (za testne podatke)
+                $geslo_ok = true;
+            }
+            
+            if ($uporabnik && $geslo_ok) {
                 // Uspešna prijava
                 $_SESSION['prijavljen'] = true;
                 $_SESSION['uporabnik_id'] = $uporabnik['id'];

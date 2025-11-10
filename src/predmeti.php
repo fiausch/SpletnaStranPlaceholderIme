@@ -68,7 +68,7 @@ if ($vloga === 'ucenec') {
             <a href="list_ucencov.php">Učenci</a>
         <?php endif; ?>
         <?php if ($vloga === 'administrator'): ?>
-            <a href="#">Profesorji</a>
+            <a href="upravljanje_ucitelji.php">Profesorji</a>
         <?php endif; ?>
         <a href="meni.php">Meni</a>
     </nav>
@@ -86,15 +86,24 @@ if ($vloga === 'ucenec') {
                         <span class="subject-name-display">
                             <?php echo htmlspecialchars($predmet['koda'] . ' - ' . $predmet['ime']); ?>
                         </span>
-                        <?php if (lahko_uredi_predmet($predmet['id'], $uporabnik_id, $vloga)): ?>
-                            <button class="btn-subject-edit" onclick="window.location.href='uredi_predmet.php?id=<?php echo $predmet['id']; ?>'">Uredi</button>
-                        <?php endif; ?>
+                        <div style="display: flex; gap: 10px;">
+                            <?php if ($vloga === 'ucenec'): ?>
+                                <button class="btn-subject-edit" onclick="window.location.href='gradiva_ucenec.php?id_predmeta=<?php echo $predmet['id']; ?>'">Gradiva</button>
+                                <button class="btn-subject-edit" onclick="window.location.href='naloge_ucenec.php?id_predmeta=<?php echo $predmet['id']; ?>'">Naloge</button>
+                            <?php elseif ($vloga === 'ucitelj'): ?>
+                                <button class="btn-subject-edit" onclick="window.location.href='gradiva.php?id_predmeta=<?php echo $predmet['id']; ?>'">Gradiva</button>
+                                <button class="btn-subject-edit" onclick="window.location.href='pregled_oddanih_nalog.php?id_predmeta=<?php echo $predmet['id']; ?>'">Oddane naloge</button>
+                            <?php endif; ?>
+                            <?php if (lahko_uredi_predmet($predmet['id'], $uporabnik_id, $vloga)): ?>
+                                <button class="btn-subject-edit" onclick="window.location.href='uredi_predmet.php?id=<?php echo $predmet['id']; ?>'">Uredi</button>
+                            <?php endif; ?>
+                        </div>
                     </div>
                 <?php endforeach; ?>
             <?php endif; ?>
 
-            <?php if ($vloga === 'administrator' || ($vloga === 'ucitelj' && !empty($predmeti))): ?>
-                <button class="btn-edit-main">Uredi</button>
+            <?php if ($vloga === 'administrator'): ?>
+                <button class="btn-edit-main" onclick="window.location.href='dodaj_predmet.php'">Dodaj predmet</button>
             <?php endif; ?>
 
         </div>

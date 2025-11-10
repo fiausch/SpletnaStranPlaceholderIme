@@ -58,6 +58,7 @@ $datum_rojstva = $uporabnik['datum_rojstva'];
                 <ul>
                     <?php if ($vloga === 'ucenec'): ?>
                         <li><a href="predmeti.php">Spletna učilnica</a></li>
+                        <li><a href="moji_predmeti_ucenec.php">Moji predmeti</a></li>
                         <li><a href="urnik.php">Urnik</a></li>
                         <li><a href="ocene.php">Ocene</a></li>
                     <?php elseif ($vloga === 'ucitelj'): ?>
@@ -69,8 +70,8 @@ $datum_rojstva = $uporabnik['datum_rojstva'];
                         <li><a href="ocene.php">Ocene</a></li>
                         <li><a href="urnik.php">Urnik</a></li>
                         <li><a href="predmeti.php">Spletna učilnica</a></li>
-                        <li><a href="list_ucencov.php">Učenci</a></li>
-                        <li><a href="#">Profesorji</a></li>
+                        <li><a href="upravljanje_ucenci.php">Učenci</a></li>
+                        <li><a href="upravljanje_ucitelji.php">Profesorji</a></li>
                     <?php endif; ?>
                 </ul>
             </section>
