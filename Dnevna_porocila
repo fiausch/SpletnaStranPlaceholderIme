@@ -13,7 +13,7 @@ Razvijalec Spletne strani(Nino):
 
 16.9.2025
 Vzdrzevalec IS (Matic):
-Naredil Apache2 streznik
+Naredil Apache2 streznik z port naledovnjem
 
 Razvijalec DB (David?):
 Ustvaril PB, načrtoval izgled spletnih strani
@@ -24,7 +24,7 @@ naredil meni za ucence, profesorje in admina in naredil stran za urnik
 23.09.2025
 Vzdrzevalec IS (Matic): 
 pripravil testne podatke za podatkovno bazo 
-Usposobil Apache2 streznik
+Usposobil Apache2 streznik z a2ensite
 
 Razvijalec DB (David?):
 ustvaril izglede za več strani
@@ -36,4 +36,17 @@ Naredil će par več spletnih strani
 Vzdrzevalec IS (Matic): 
 Dodelal php na linux virtualnem stroju
 mariaDB usposobil na streznik
+
+6.10.2025:
+Vzdrzezevalec IS (Matic):
+preko infinityfree nastavil https://placeholder-domain.rf.gd/ z naso bazo in html/php kodo
+
+13.10.2025
+Vzdrzevalec IS (Matic):
+Zacel vstaljati testne podatke v bazo
+
+20.10.2025
+Vzdrzevalec IS (Matic):
+
+
 
