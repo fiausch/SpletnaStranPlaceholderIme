@@ -48,7 +48,7 @@ $datum_rojstva = $uporabnik['datum_rojstva'];
                 <?php if ($vloga === 'ucenec'): ?>
                 <div class="data-item">
                     <div class="data-label">Razred:</div>
-                    <input type="text" class="data-input" value="*razred*" disabled>
+                    <input type="text" class="data-input" value="<?php echo $razred ? htmlspecialchars($razred) : 'Ni podatka'; ?>" disabled>
                 </div>
                 <?php endif; ?>
             </section>
